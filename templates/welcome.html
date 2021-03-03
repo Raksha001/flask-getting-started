@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+    <h1>Welcome to my page!</h1>
+    <p>
+        This is the demo application to learn korean!
+    </p>
+
+    <h2>Flash Cards</h2>
+<div class="row">
+
+        {% for card in cards %}
+      <div class="col-sm-3 p-4">
+            <div class = "card">
+                <div class = "card-body" style="width: 18rem;">
+                    <a href="{{ url_for('card_view', index=loop.index0) }}">
+                        {{ card.question }}
+                    </a>
+                </div>
+            </div>
+      </div>
+        {% endfor %}
+
+</div>
+    <a class="btn btn-info" href="{{ url_for('add_card') }}" role="button">Add New Card</a>
+{% endblock %}
